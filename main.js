@@ -1,4 +1,5 @@
 /*global Vue*/
+const STORAGE_KEY = "todosData";
 const todoApp = Vue.createApp({
   el: "#todoapp",
   data() {
@@ -16,6 +17,7 @@ const todoApp = Vue.createApp({
         id: this.contents.length + 1,
         body: this.body,
       });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.contents));
       this.body = "";
     },
   },
