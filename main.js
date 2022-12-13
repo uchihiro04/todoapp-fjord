@@ -4,7 +4,7 @@ const todoApp = Vue.createApp({
   el: "#todoapp",
   data() {
     return {
-      contents: [],
+      contents: JSON.parse(localStorage.getItem(STORAGE_KEY)) || [],
       body: "",
     };
   },
@@ -14,7 +14,7 @@ const todoApp = Vue.createApp({
         return;
       }
       this.contents.push({
-        id: this.contents.length + 1,
+        id: self.crypto.randomUUID(),
         body: this.body,
       });
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.contents));
