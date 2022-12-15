@@ -23,6 +23,7 @@
           <span v-else>
             <input v-model="content.body" />
             <button @click="updateTodo(content)">保存</button>
+            <button @click="cancelEdit(content)">キャンセル</button>
           </span>
         </li>
       </ul>

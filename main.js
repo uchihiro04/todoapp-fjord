@@ -24,6 +24,7 @@ const todoApp = Vue.createApp({
     },
 
     editTodo: function (content) {
+      this.preEditingTodo = content.body;
       this.editingTodo = content.id;
     },
 
@@ -31,6 +32,11 @@ const todoApp = Vue.createApp({
       this.editingTodo = undefined;
       content.body = content.body.trim();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.contents));
+    },
+
+    cancelEdit: function (content) {
+      this.editingTodo = undefined;
+      content.body = this.preEditingTodo;
     },
 
     removeTodo: function (id) {
