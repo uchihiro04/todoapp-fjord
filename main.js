@@ -32,6 +32,10 @@ const todoApp = Vue.createApp({
       this.editingTodo = undefined;
       content.body = content.body.trim();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.contents));
+      if (!content.body) {
+        this.removeTodo(content.id);
+        return;
+      }
     },
 
     cancelEdit: function (content) {
