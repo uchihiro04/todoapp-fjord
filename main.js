@@ -5,9 +5,11 @@ const todoApp = Vue.createApp({
   data() {
     return {
       contents: JSON.parse(localStorage.getItem(STORAGE_KEY)) || [],
-      body: "",
+      body: undefined,
+      editingTodo: undefined,
     };
   },
+
   methods: {
     addTodo: function () {
       if (!this.body) {
@@ -18,7 +20,24 @@ const todoApp = Vue.createApp({
         body: this.body,
       });
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.contents));
-      this.body = "";
+      this.body = undefined;
+    },
+
+    editTodo: function (content) {
+      this.editingTodo = content.id;
+    },
+
+    updateTodo: function (content) {
+      this.editingTodo = undefined;
+      content.body = content.body.trim();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.contents));
+    },
+
+    removeTodo: function (id) {
+      this.contents = this.contents.filter((content) => {
+        return content.id != id;
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.contents));
     },
   },
 });
