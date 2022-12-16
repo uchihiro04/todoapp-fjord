@@ -21,7 +21,12 @@
             <button @click="removeTodo(content.id)">削除</button>
           </span>
           <span v-else>
-            <input v-model="content.body" v-focus />
+            <input
+              v-model="content.body"
+              v-focus
+              @keypress.enter="updateTodo(content)"
+              @keyup.escape="cancelEdit(content)"
+            />
             <button @click="updateTodo(content)">保存</button>
             <button @click="cancelEdit(content)">キャンセル</button>
           </span>
