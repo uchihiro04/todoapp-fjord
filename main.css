@@ -7,3 +7,8 @@ body {
   font: inherit;
   vertical-align: baseline;
 }
+
+label.checked {
+  color: #949494;
+  text-decoration: line-through;
+}

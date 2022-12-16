@@ -18,8 +18,9 @@ const todoApp = Vue.createApp({
       this.contents.push({
         id: self.crypto.randomUUID(),
         body: this.body,
+        isChecked: false,
       });
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.contents));
+      this.saveTodo(this.contents);
       this.body = undefined;
     },
 
@@ -31,7 +32,7 @@ const todoApp = Vue.createApp({
     updateTodo: function (content) {
       this.editingTodo = undefined;
       content.body = content.body.trim();
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.contents));
+      this.saveTodo(this.contents);
       if (!content.body) {
         this.removeTodo(content.id);
         return;
@@ -47,7 +48,16 @@ const todoApp = Vue.createApp({
       this.contents = this.contents.filter((content) => {
         return content.id != id;
       });
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.contents));
+      this.saveTodo(this.contents);
+    },
+
+    saveTodo: function (contents) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(contents));
+    },
+
+    checkTodo: function (content) {
+      content.isChecked = !content.isChecked;
+      this.saveTodo(this.contents);
     },
   },
 

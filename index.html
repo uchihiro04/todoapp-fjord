@@ -15,8 +15,15 @@
       </form>
       <ul>
         <li v-for="content in contents" :key="content.id">
+          <input
+            type="checkbox"
+            v-model="content.isChecked"
+            @click="checkTodo(content)"
+          />
           <span v-if="editingTodo !== content">
-            {{content.body}}
+            <label :class="{checked: content.isChecked}">
+              {{content.body}}
+            </label>
             <button @click="editTodo(content)">編集</button>
             <button @click="removeTodo(content.id)">削除</button>
           </span>
