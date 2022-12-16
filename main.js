@@ -25,7 +25,7 @@ const todoApp = Vue.createApp({
 
     editTodo: function (content) {
       this.preEditingTodo = content.body;
-      this.editingTodo = content.id;
+      this.editingTodo = content;
     },
 
     updateTodo: function (content) {
@@ -48,6 +48,12 @@ const todoApp = Vue.createApp({
         return content.id != id;
       });
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.contents));
+    },
+  },
+
+  directives: {
+    focus: function (el) {
+      el.focus();
     },
   },
 });

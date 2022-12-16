@@ -15,13 +15,13 @@
       </form>
       <ul>
         <li v-for="content in contents" :key="content.id">
-          <span v-if="editingTodo !== content.id">
+          <span v-if="editingTodo !== content">
             {{content.body}}
             <button @click="editTodo(content)">編集</button>
             <button @click="removeTodo(content.id)">削除</button>
           </span>
           <span v-else>
-            <input v-model="content.body" />
+            <input v-model="content.body" v-focus />
             <button @click="updateTodo(content)">保存</button>
             <button @click="cancelEdit(content)">キャンセル</button>
           </span>
