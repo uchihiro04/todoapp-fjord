@@ -20,7 +20,7 @@ const todoApp = Vue.createApp({
         body: this.body,
         isChecked: false,
       });
-      this.saveTodo(this.contents);
+      this.saveTodo;
       this.body = undefined;
     },
 
@@ -32,7 +32,7 @@ const todoApp = Vue.createApp({
     updateTodo: function (content) {
       this.editingTodo = undefined;
       content.body = content.body.trim();
-      this.saveTodo(this.contents);
+      this.saveTodo;
       if (!content.body) {
         this.removeTodo(content.id);
         return;
@@ -48,11 +48,11 @@ const todoApp = Vue.createApp({
       this.contents = this.contents.filter((content) => {
         return content.id != id;
       });
-      this.saveTodo(this.contents);
+      this.saveTodo;
     },
 
-    saveTodo: function (contents) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(contents));
+    saveTodo: function () {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.contents));
     },
 
     checkTodo: function (content) {
