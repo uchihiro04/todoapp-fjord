@@ -97,7 +97,8 @@ button:hover {
   margin-bottom: 3rem;
 }
 
-.todo-list-text-container {
+.todo-list-text-container,
+.todo-list-edit-container {
   display: flex;
   justify-content: space-between;
   width: 100%;
