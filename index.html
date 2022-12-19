@@ -9,36 +9,62 @@
   <body>
     <div id="todoapp">
       <h1>Todoリスト</h1>
-      <form @submit.prevent="addTodo">
-        <input v-model="body" />
-        <button type="submit">追加</button>
-      </form>
-      <ul>
-        <li v-for="content in contents" :key="content.id">
-          <input
-            type="checkbox"
-            v-model="content.isChecked"
-            @click="checkTodo(content)"
-          />
-          <span v-if="editingTodo !== content">
-            <label :class="{checked: content.isChecked}">
-              {{content.body}}
-            </label>
-            <button @click="editTodo(content)">編集</button>
-            <button @click="removeTodo(content.id)">削除</button>
-          </span>
-          <span v-else>
+      <div class="todo-container">
+        <form @submit.prevent="addTodo">
+          <input class="addtodo-form" v-model="body" />
+          <button type="submit">追加</button>
+        </form>
+        <ul class="todo-list">
+          <li
+            class="todo-list-item"
+            v-for="content in contents"
+            :key="content.id"
+          >
             <input
-              v-model="content.body"
-              v-focus
-              @keypress.enter="updateTodo(content)"
-              @keyup.escape="cancelEdit(content)"
+              type="checkbox"
+              v-model="content.isChecked"
+              @click="checkTodo(content)"
             />
-            <button @click="updateTodo(content)">保存</button>
-            <button @click="cancelEdit(content)">キャンセル</button>
-          </span>
-        </li>
-      </ul>
+            <div
+              class="todo-list-text-container"
+              v-if="editingTodo !== content"
+            >
+              <div>
+                <label
+                  class="todo-list-text"
+                  :class="{checked: content.isChecked}"
+                >
+                  {{content.body}}
+                </label>
+              </div>
+              <div>
+                <button @click="editTodo(content)">編集</button>
+                <button class="remove-button" @click="removeTodo(content.id)">
+                  削除
+                </button>
+              </div>
+            </div>
+
+            <div class="todo-list-text-container" v-else>
+              <div>
+                <input
+                  class="edit-todo-textbox"
+                  v-model="content.body"
+                  v-focus
+                  @keypress.enter="updateTodo(content)"
+                  @keyup.escape="cancelEdit(content)"
+                />
+              </div>
+              <div>
+                <button @click="updateTodo(content)">保存</button>
+                <button class="cancel-edit-button" @click="cancelEdit(content)">
+                  キャンセル
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="main.js"></script>
