@@ -26,10 +26,10 @@
 
 ## 利用方法
 
-1. 任意の作業ディレクトリにて `git clone` してください。
+1. 任意の作業ディレクトリにて `git clone` してください。(プルリクエストの段階のため、ブランチを指定してください)
 
 ```
-$ git clone https://github.com/自分のアカウント名/todoapp-fjord.git
+$ git clone -b my-todoapp https://github.com/自分のアカウント名/todoapp-fjord.git
 ```
 
 1. `cd todo-fjord` でカレントディレクトリを変更してください。
