@@ -46,7 +46,7 @@ const todoApp = Vue.createApp({
 
     removeTodo: function (id) {
       this.contents = this.contents.filter((content) => {
-        return content.id != id;
+        return content.id !== id;
       });
       this.saveTodo;
     },
