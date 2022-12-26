@@ -57,7 +57,7 @@ const todoApp = Vue.createApp({
 
     checkTodo: function (content) {
       content.isChecked = !content.isChecked;
-      this.saveTodo(this.contents);
+      this.saveTodo();
     },
   },
 
