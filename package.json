@@ -1,0 +1,28 @@
+{
+  "name": "todoapp-fjord",
+  "version": "1.0.0",
+  "description": "\"\"",
+  "main": "main.js",
+  "scripts": {
+    "test": "\"\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uchihiro04/todoapp-fjord.git"
+  },
+  "keywords": [
+    "\"\""
+  ],
+  "author": "Hiroto Uchida <tohchi4122@gmail.com> (https://github.com/uchihiro04)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uchihiro04/todoapp-fjord/issues"
+  },
+  "homepage": "https://github.com/uchihiro04/todoapp-fjord#readme",
+  "devDependencies": {
+    "eslint": "^8.29.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-vue": "^9.8.0",
+    "prettier": "2.8.0"
+  }
+}
